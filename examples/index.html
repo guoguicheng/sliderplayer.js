@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>sliderplayer.js</title>
+    <meta charset="UTF-8">
+    <script src="../build/sliderplayer.js"></script>
+	<script>
+	function init(){
+		var auto=false;
+		var player=new sliderplayer('images/out.jpg',"player",580,300,function () {
+			//player.autoplay();
+			document.addEventListener("mousemove",function(e){
+				if(!auto)
+					player.slideplay();
+			});
+			document.getElementById("autoplay").addEventListener("click",function(e){
+				auto=true;
+				player.autoplay();
+			});
+			document.getElementById("slideplay").addEventListener("click",function(e){
+				auto=false;
+				player.slideplay();
+			});
+		});
+		
+	}
+	window.onload=init;
+	</script>
+</head>
+<body>
+<div id="player"></div>
+<button id="autoplay">autoplay</button>|
+<button id="slideplay">slideplay</button>|
+</body>
+</html>
