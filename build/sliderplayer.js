@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * Created by GGC on 2017/4/28.
  */
 var sliderplayer=function (imgurl,id,w,h,loadedCallback) {
@@ -89,17 +89,17 @@ sliderplayer.prototype._divideCoordinate=function(w, h, row, col) {
 
 sliderplayer.prototype._draw=function(c, bitmapData, list) {
 	//console.log(list);
-	if(this.animateCurframe > list[this.animateAction].length-1){ //µ±Ç°Í¼Æ¬Î»ÖÃ´óÓÚµ±Ç°ĞĞÍ¼Æ¬ÊıÁ¿
-		this.animateAction+=1;	//µ±Ç°ĞĞÏÂÒÆÒ»ĞĞ
-		if(this.animateAction > list.length-1){//Èç¹ûÕıĞòÒÑ¾­²¥·ÅÍê
+	if(this.animateCurframe > list[this.animateAction].length-1){ //å½“å‰å›¾ç‰‡ä½ç½®å¤§äºå½“å‰è¡Œå›¾ç‰‡æ•°é‡
+		this.animateAction+=1;	//å½“å‰è¡Œä¸‹ç§»ä¸€è¡Œ
+		if(this.animateAction > list.length-1){//å¦‚æœæ­£åºå·²ç»æ’­æ”¾å®Œ
 			this.animateAction = 0;
 		}
-		this.animateCurframe = 0; //µ±Ç°Í¼Æ¬Î»ÖÃÒÆ¶¯µ½ÉÏÒ»ĞĞĞĞÊ×
+		this.animateCurframe = 0; //å½“å‰å›¾ç‰‡ä½ç½®ç§»åŠ¨åˆ°ä¸Šä¸€è¡Œè¡Œé¦–
 		//console.log("fuzhi");
 	}else if(this.animateCurframe<0){
 		//console.log("====");
-		this.animateAction-=1;	//µ±Ç°ĞĞÉÏÒÆÒ»ĞĞ
-		if(this.animateAction <0){	//Èç¹ûÊÇµ¹Ğò²¥·ÅÍê
+		this.animateAction-=1;	//å½“å‰è¡Œä¸Šç§»ä¸€è¡Œ
+		if(this.animateAction <0){	//å¦‚æœæ˜¯å€’åºæ’­æ”¾å®Œ
 			this.animateAction = list.length-1;
 		}
 		this.animateCurframe= list[this.animateAction].length-1;

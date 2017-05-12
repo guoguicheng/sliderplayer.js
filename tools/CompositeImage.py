@@ -1,14 +1,14 @@
-# -*- coding:utf-8 -*- 
+ï»¿# -*- coding:utf-8 -*- 
 #########################################################
-#Í¼Æ¬ĞòÁĞÆ´½Ó³É³¤Í¼£¬ÓÃÓÚÍøÒ³sliderplayer.jsĞòÁĞÖ¡²¥·Å###
-#Ğè½«Í¼Æ¬ÖÃÓÚ¸Ä½Å±¾Í¬¼¶µÄimagesÎÄ¼ş¼ĞÄÚ£¬Ä¬ÈÏºó×ºÎª.jpg##
+#å›¾ç‰‡åºåˆ—æ‹¼æ¥æˆé•¿å›¾ï¼Œç”¨äºç½‘é¡µsliderplayer.jsåºåˆ—å¸§æ’­æ”¾###
+#éœ€å°†å›¾ç‰‡ç½®äºæ”¹è„šæœ¬åŒçº§çš„imagesæ–‡ä»¶å¤¹å†…ï¼Œé»˜è®¤åç¼€ä¸º.jpg##
 #########################################################
 
 from PIL import Image
 import os
 import sys
 def createImagesContent(width,height):
-	return Image.new ("RGBA", (width, height), (255, 255, 255)) #ĞÂ½¨Ò»¸öimage¶ÔÏócreating images from scratch
+	return Image.new ("RGBA", (width, height), (255, 255, 255)) #æ–°å»ºä¸€ä¸ªimageå¯¹è±¡creating images from scratch
 def loadImagesList(dir='images',ext='.jpg'):
 	allfiles = []
 	needExtFilter = (ext != None)
@@ -22,7 +22,7 @@ def loadImagesList(dir='images',ext='.jpg'):
 				allfiles.append(filepath)
 	return allfiles
 def compositeImages(ext,indir,outfile):
-	#¼ÓÔØµ×Í¼
+	#åŠ è½½åº•å›¾
 	colCount=4
 	baseWidth,baseHeight=580,300
 	imageList=loadImagesList(indir,ext)
@@ -34,24 +34,24 @@ def compositeImages(ext,indir,outfile):
 	
 	for i in range(rowCount):
 		for j in range(colCount):
-			# ¿ÉÒÔ²é¿´Í¼Æ¬µÄsizeºÍmode£¬³£¼ûmodeÓĞRGBºÍRGBA£¬RGBA±ÈRGB¶àÁËAlphaÍ¸Ã÷¶È
+			# å¯ä»¥æŸ¥çœ‹å›¾ç‰‡çš„sizeå’Œmodeï¼Œå¸¸è§modeæœ‰RGBå’ŒRGBAï¼ŒRGBAæ¯”RGBå¤šäº†Alphaé€æ˜åº¦
 			# print base_img.size, base_img.mode
 			left, upper=j*baseWidth, i*baseHeight
-			box = (left,upper, left+baseWidth, upper+baseHeight)  # µ×Í¼ÉÏĞèÒªPµôµÄÇøÓò
+			box = (left,upper, left+baseWidth, upper+baseHeight)  # åº•å›¾ä¸Šéœ€è¦Pæ‰çš„åŒºåŸŸ
 			
 			#break
-			#¼ÓÔØĞèÒªPÉÏÈ¥µÄÍ¼Æ¬
+			#åŠ è½½éœ€è¦Pä¸Šå»çš„å›¾ç‰‡
 			
 			region = Image.open(ur'%s' %(imageList[currentIndex]))
-			#ÕâÀï¿ÉÒÔÑ¡ÔñÒ»¿éÇøÓò»òÕßÕûÕÅÍ¼Æ¬
-			#region = tmp_img.crop((0,0,304,546)) #Ñ¡ÔñÒ»¿éÇøÓò
-			#»òÕßÊ¹ÓÃÕûÕÅÍ¼Æ¬
+			#è¿™é‡Œå¯ä»¥é€‰æ‹©ä¸€å—åŒºåŸŸæˆ–è€…æ•´å¼ å›¾ç‰‡
+			#region = tmp_img.crop((0,0,304,546)) #é€‰æ‹©ä¸€å—åŒºåŸŸ
+			#æˆ–è€…ä½¿ç”¨æ•´å¼ å›¾ç‰‡
 			#region = tmp_img
 
-			#Ê¹ÓÃ paste(region, box) ·½·¨½«Í¼Æ¬Õ³Ìùµ½ÁíÒ»ÖÖÍ¼Æ¬ÉÏÈ¥.
-			# ×¢Òâ£¬regionµÄ´óĞ¡±ØĞëºÍboxµÄ´óĞ¡ÍêÈ«Æ¥Åä¡£µ«ÊÇÁ½ÕÅÍ¼Æ¬µÄmode¿ÉÒÔ²»Í¬£¬ºÏ²¢µÄÊ±ºò»Ø×Ô¶¯×ª»¯¡£Èç¹ûĞèÒª±£ÁôÍ¸Ã÷¶È£¬ÔòÊ¹ÓÃRGMA mode
-			#ÌáÇ°½«Í¼Æ¬½øĞĞËõ·Å£¬ÒÔÊÊÓ¦boxÇøÓò´óĞ¡
-			# region = region.rotate(180) #¶ÔÍ¼Æ¬½øĞĞĞı×ª
+			#ä½¿ç”¨ paste(region, box) æ–¹æ³•å°†å›¾ç‰‡ç²˜è´´åˆ°å¦ä¸€ç§å›¾ç‰‡ä¸Šå».
+			# æ³¨æ„ï¼Œregionçš„å¤§å°å¿…é¡»å’Œboxçš„å¤§å°å®Œå…¨åŒ¹é…ã€‚ä½†æ˜¯ä¸¤å¼ å›¾ç‰‡çš„modeå¯ä»¥ä¸åŒï¼Œåˆå¹¶çš„æ—¶å€™å›è‡ªåŠ¨è½¬åŒ–ã€‚å¦‚æœéœ€è¦ä¿ç•™é€æ˜åº¦ï¼Œåˆ™ä½¿ç”¨RGMA mode
+			#æå‰å°†å›¾ç‰‡è¿›è¡Œç¼©æ”¾ï¼Œä»¥é€‚åº”boxåŒºåŸŸå¤§å°
+			# region = region.rotate(180) #å¯¹å›¾ç‰‡è¿›è¡Œæ—‹è½¬
 			
 			region = region.resize((baseWidth,baseHeight))
 			base_img.paste(region, box)
@@ -59,15 +59,16 @@ def compositeImages(ext,indir,outfile):
 				currentIndex+=1
 			else:
 				break
-	#base_img.show() # ²é¿´ºÏ³ÉµÄÍ¼Æ¬
-	base_img.save(outfile) #±£´æÍ¼Æ¬
+	#base_img.show() # æŸ¥çœ‹åˆæˆçš„å›¾ç‰‡
+	base_img.save(outfile) #ä¿å­˜å›¾ç‰‡
 if __name__=="__main__":
 	ext,inputdir=sys.argv[1],sys.argv[2]
 	if(inputdir==""):
-		print("ÇëÊäÈëÍ¼Æ¬ÁĞ±íÎÄ¼ş¼ĞµØÖ·!")
+		print("è¯·è¾“å…¥å›¾ç‰‡åˆ—è¡¨æ–‡ä»¶å¤¹åœ°å€!")
 		quit()
 	try:
 		outfile=sys.argv[3]
 	except:
 		outfile="./out.jpg"
 	compositeImages(ext,inputdir,outfile)
+ 
