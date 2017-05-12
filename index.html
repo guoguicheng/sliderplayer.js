@@ -1,36 +1,37 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>sliderplayer.js</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			
-			* {
-				box-sizing: border-box;
-			}
 
-			html {
-				height: 100%;
-			}
+<html>
 
-			body {
-				background-color: #ffffff;
-				margin: 0px;
-				height: 100%;
-				color: #555;
-				font-family: 'inconsolata';
-				font-size: 15px;
-				line-height: 18px;
-				overflow: hidden;
-			}
-
-
-
-		</style>
-	</head>
-	<body>
-		<h5>html5 canvas 图片序列帧播放器</h5>
-
-	</body>
+<head>
+    <title>sliderplayer.js</title>
+    <meta charset="UTF-8">
+    <script src="../sliderplayer.js"></script>
+	<script>
+	function init(){
+		var auto=false;
+		var player=new sliderplayer('images/out.jpg',"player",580,300,function () {
+			//player.autoplay();
+			document.addEventListener("mousemove",function(e){
+				if(!auto)
+					player.slideplay();
+			});
+			document.getElementById("autoplay").addEventListener("click",function(e){
+				auto=true;
+				player.autoplay();
+			});
+			document.getElementById("slideplay").addEventListener("click",function(e){
+				auto=false;
+				player.slideplay();
+			});
+		});
+		
+	}
+	window.onload=init;
+	</script>
+</head>
+<body>
+<div id="player"></div>
+<button id="autoplay">autoplay</button>|
+<button id="slideplay">slideplay</button>|
+</body>
 </html>
